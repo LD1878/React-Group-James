@@ -1,6 +1,7 @@
 ---
 layout: service
 title: Commercial EICR Testing
+permalink: /services/eicr-testing/
 description: Ensure your business is compliant with BS 7671 standards. Our nationwide team delivers fixed wire testing with zero disruption.
 service_type: Electrical Compliance
 steps:
@@ -23,6 +24,8 @@ faqs:
 
 ## What is Fixed Wire Testing?
 An **Electrical Installation Condition Report (EICR)** is the MOT for your building's electrical system. Over time, connections loosen, wires degrade, and safety devices can fail.
+
+[Image of EICR testing procedure flow chart]
 
 Under the **Health and Safety at Work Act 1974**, you have a legal duty to ensure your electrical equipment is safe. Failure to do so can invalidate your insurance and lead to prosecution.
 
