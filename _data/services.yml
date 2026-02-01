@@ -1,0 +1,17 @@
+- name: Electrical
+  slug: electrical
+  sub_services:
+    - title: "EICR Testing"
+      url: "/services/eicr-testing/"
+      description: "Comprehensive electrical installation condition reports."
+    - title: "PAT Testing"
+      url: "/services/pat-testing/"
+      description: "Portable appliance testing for workplace safety."
+
+- name: Fire Safety
+  slug: fire
+  sub_services:
+    - title: "Fire Door Inspections"
+      url: "/services/fire-door-inspections/"
+    - title: "Fire Risk Assessment"
+      url: "/services/fire-risk-assessment/"
