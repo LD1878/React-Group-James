@@ -1,0 +1,19 @@
+title: Reaction Group
+email: info@reaction-grp.com
+description: >- 
+  Nationwide electrical and fire compliance specialists. Simple, trusted 
+  safety services including EICR, PAT testing, and Fire Risk Assessments.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://yourusername.github.io" # the base hostname & protocol
+
+# SEO & Social
+twitter_username: reactiongroup
+github_username: yourusername
+logo: /assets/images/logo.png
+
+# Build Settings
+markdown: kramdown
+theme: minima # We will override this with your custom CSS
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag # THIS IS CRITICAL: Automatically handles meta tags
