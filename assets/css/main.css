@@ -1,0 +1,129 @@
+/* assets/css/main.css */
+
+:root {
+    /* --- BRAND PALETTE (Reaction Group Identity) --- */
+    --brand-navy: #163259;       /* Primary: Trust, Authority, Engineering */
+    --brand-red: #e31e24;        /* Accent: Safety, Urgent, Action */
+    --brand-white: #ffffff;
+    --text-main: #2d3436;        /* Dark Grey for readability */
+    --text-light: #636e72;       /* Muted text for meta info */
+    --bg-light: #f4f7f6;         /* Light grey background for sections */
+    --border-color: #d1d8e0;
+    
+    /* --- TYPOGRAPHY --- */
+    --font-heading: 'Oswald', sans-serif; /* Strong, industrial headers */
+    --font-body: 'Inter', sans-serif;     /* Clean, modern readability */
+    
+    /* --- SPACING & SHADOWS --- */
+    --container-width: 1200px;
+    --header-height: 80px;
+    --shadow-card: 0 4px 6px rgba(0,0,0,0.05);
+    --shadow-hover: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* --- RESET & BASE --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-main);
+    line-height: 1.6;
+    background-color: var(--brand-white);
+}
+
+h1, h2, h3, h4, .nav-link, .btn {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+a { text-decoration: none; color: inherit; transition: 0.2s; }
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- BUTTONS --- */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background-color: var(--brand-red);
+    color: white;
+}
+.btn-primary:hover { background-color: #c0151a; }
+
+.btn-outline {
+    border: 2px solid var(--brand-navy);
+    color: var(--brand-navy);
+}
+.btn-outline:hover { background-color: var(--brand-navy); color: white; }
+
+/* --- HEADER --- */
+.site-header {
+    height: var(--header-height);
+    background: white;
+    border-bottom: 4px solid var(--brand-navy);
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--brand-navy);
+}
+
+/* --- NAVIGATION --- */
+.site-nav { display: flex; gap: 30px; align-items: center; }
+
+.nav-link {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--brand-navy);
+    position: relative;
+}
+.nav-link:hover { color: var(--brand-red); }
+
+/* Dropdown Logic */
+.dropdown { position: relative; padding: 10px 0; }
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    background: white;
+    min-width: 220px;
+    box-shadow: var(--shadow-hover);
+    border-top: 3px solid var(--brand-red);
+    padding: 10px 0;
+}
+.dropdown:hover .dropdown-menu { display: block; }
+.dropdown-item {
+    display: block;
+    padding: 10px 20px;
+    font-family: var(--font-body); /* Body font for sub-items reads better */
+    font-size: 0.9rem;
+    color: var(--text-main);
+    text-transform: none;
+}
+.dropdown-item:hover { background: var(--bg-light); color: var(--brand-red); }
