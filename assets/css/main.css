@@ -1,254 +1,226 @@
-Here is the **complete, consolidated `assets/css/main.css` file**.
+/* assets/css/main.css - HIGH FIDELITY VERSION */
 
-This includes the core branding, the navigation dropdowns, and the new Service Page layout (grid & sticky sidebar). You can overwrite your current file with this.
-
-```css
-/* assets/css/main.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;700&display=swap');
 
 :root {
-    /* --- BRAND PALETTE (Reaction Group Identity) --- */
-    --brand-navy: #163259;       /* Primary: Trust, Authority, Engineering */
-    --brand-red: #e31e24;        /* Accent: Safety, Urgent, Action */
+    /* Brand Colors - Deep & Authoritative */
+    --brand-navy: #0f172a;       /* Darker, richer navy */
+    --brand-blue: #1e3a8a;       /* Brighter blue for accents */
+    --brand-red: #dc2626;        /* Sharp safety red */
     --brand-white: #ffffff;
     
-    --text-main: #2d3436;        /* Dark Grey for readability */
-    --text-light: #636e72;       /* Muted text for meta info */
+    /* UI Colors */
+    --bg-body: #f8fafc;          /* Cool grey background */
+    --bg-card: #ffffff;
+    --text-main: #334155;
+    --text-dark: #0f172a;
+    --border-subtle: #e2e8f0;
     
-    --bg-light: #f4f7f6;         /* Light grey background for sections */
-    --border-color: #d1d8e0;
-    
-    /* --- TYPOGRAPHY --- */
-    --font-heading: 'Oswald', sans-serif; /* Strong, industrial headers */
-    --font-body: 'Inter', sans-serif;     /* Clean, modern readability */
-    
-    /* --- SPACING & SHADOWS --- */
-    --container-width: 1200px;
+    /* Spacing & Layout */
     --header-height: 80px;
-    --shadow-card: 0 4px 6px rgba(0,0,0,0.05);
-    --shadow-hover: 0 10px 20px rgba(0,0,0,0.1);
+    --container-width: 1240px;
+    
+    /* Shadows - The "Premium" Feel */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
 }
 
-/* --- 1. RESET & BASE --- */
+/* 1. RESET & TYPOGRAPHY */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    font-family: var(--font-body);
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-body);
     color: var(--text-main);
     line-height: 1.6;
-    background-color: var(--brand-white);
     -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, .nav-link, .btn {
-    font-family: var(--font-heading);
+h1, h2, h3, h4, .btn, .nav-link {
+    font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    color: var(--text-dark);
 }
 
-a { text-decoration: none; color: inherit; transition: 0.2s ease; }
+a { text-decoration: none; transition: all 0.2s ease; }
 
 .container {
     max-width: var(--container-width);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 24px;
 }
 
-/* --- 2. BUTTONS --- */
-.btn {
-    display: inline-block;
-    padding: 12px 24px;
-    font-weight: 700;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    text-align: center;
-}
-
-.btn-primary {
-    background-color: var(--brand-red);
-    color: white;
-}
-.btn-primary:hover { 
-    background-color: #c0151a; 
-    transform: translateY(-1px);
-}
-
-.btn-outline {
-    border: 2px solid var(--brand-navy);
-    color: var(--brand-navy);
-}
-.btn-outline:hover { 
-    background-color: var(--brand-navy); 
-    color: white; 
-}
-
-/* --- 3. HEADER & NAVIGATION --- */
+/* 2. HEADER - STICKY & CLEAN */
 .site-header {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
     height: var(--header-height);
-    background: white;
-    border-bottom: 4px solid var(--brand-navy);
-    display: flex;
-    align-items: center;
+    border-bottom: 1px solid var(--border-subtle);
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .header-inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    height: 100%;
 }
 
 .logo {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 800;
     color: var(--brand-navy);
-    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.site-nav { display: flex; gap: 30px; align-items: center; }
+.site-nav { display: flex; gap: 32px; align-items: center; }
 
 .nav-link {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    color: var(--brand-navy);
-    position: relative;
+    color: var(--text-main);
     cursor: pointer;
 }
 .nav-link:hover { color: var(--brand-red); }
 
-/* Dropdown Menu */
-.dropdown { position: relative; padding: 25px 0; /* padding helps bridge gap */ }
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: -20px;
-    background: white;
-    min-width: 240px;
-    box-shadow: var(--shadow-hover);
-    border-top: 4px solid var(--brand-red);
-    padding: 10px 0;
-    border-radius: 0 0 4px 4px;
-}
-
-.dropdown:hover .dropdown-menu { display: block; }
-
-.dropdown-item {
-    display: block;
-    padding: 12px 24px;
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    color: var(--text-main);
-    text-transform: none;
-    border-bottom: 1px solid var(--bg-light);
-}
-
-.dropdown-item:hover { 
-    background: var(--bg-light); 
-    color: var(--brand-red); 
-    padding-left: 28px; /* Slight movement effect */
-}
-
-/* --- 4. HERO / PAGE HEADER --- */
-.page-header {
-    background: var(--brand-navy);
+/* 3. HERO SECTIONS - THE BIG VISUAL FIX */
+.hero-section {
+    background: linear-gradient(135deg, var(--brand-navy) 0%, #1e293b 100%);
     color: white;
-    padding: 60px 0;
-    margin-bottom: 40px;
-    border-bottom: 5px solid var(--brand-red);
+    padding: 120px 0 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
-.page-header h1 {
-    font-size: 3rem;
-    margin-top: 10px;
-    margin-bottom: 10px;
+/* Subtle pattern overlay for texture */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(#ffffff 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.05;
 }
 
-/* --- 5. SERVICE PAGE LAYOUT (GRID) --- */
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: #cbd5e1; /* Light grey text */
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+/* 4. BUTTONS - HIGH CONTRAST */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    font-weight: 700;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--brand-red);
+    color: white;
+    box-shadow: 0 4px 14px 0 rgba(220, 38, 38, 0.39);
+}
+.btn-primary:hover { 
+    background-color: #b91c1c; 
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.2);
+    color: white;
+}
+.btn-outline:hover {
+    border-color: white;
+    background: rgba(255,255,255,0.1);
+}
+
+/* 5. CARDS (Service Grid) */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: -50px; /* Pulls cards up into hero */
+    position: relative;
+    z-index: 10;
+}
+
+.card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-subtle);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+    border-color: var(--brand-red);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* 6. SERVICE PAGE LAYOUT */
 .layout-grid {
     display: grid;
-    grid-template-columns: 1fr 350px; /* Main Content | Sidebar */
-    gap: 50px;
-    align-items: start;
-    margin-bottom: 80px;
+    grid-template-columns: 1fr 380px;
+    gap: 60px;
+    padding: 60px 0;
 }
 
-/* Main Content Area Styling */
-.content-area h2 {
-    color: var(--brand-navy);
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 10px;
-    font-size: 1.8rem;
+.content-area {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-subtle);
 }
 
-.content-area h3 {
-    color: var(--brand-red);
-    margin-top: 2rem;
-    margin-bottom: 0.8rem;
-    font-size: 1.4rem;
-}
-
-.content-area p { margin-bottom: 1.2rem; font-size: 1.05rem; }
-
-.content-area ul { 
-    margin-left: 20px; 
-    margin-bottom: 20px; 
-}
-.content-area li { margin-bottom: 8px; }
-
-.content-area blockquote {
-    background: var(--bg-light);
-    border-left: 4px solid var(--brand-navy);
-    padding: 20px;
-    font-style: italic;
-    margin: 30px 0;
-    color: var(--text-main);
-}
-
-/* Sticky Sidebar */
 .sidebar-sticky {
     position: sticky;
-    top: 110px; /* Stick below the header */
-    background: var(--bg-light);
-    padding: 35px;
-    border-radius: 8px;
-    border-top: 4px solid var(--brand-red);
-    box-shadow: var(--shadow-card);
+    top: 100px;
 }
 
-.check-list li {
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.95rem;
-    color: var(--brand-navy);
-    font-weight: 600;
+.quote-box {
+    background: var(--brand-navy);
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
 }
 
-/* --- 6. MOBILE RESPONSIVENESS --- */
+.quote-box h3, .quote-box h4 { color: white; }
+
+/* Mobile */
 @media (max-width: 900px) {
-    .site-nav { display: none; } /* For now - we can add mobile menu js later */
-    
-    .layout-grid { 
-        grid-template-columns: 1fr; 
-        gap: 30px;
-    }
-    
-    .sidebar-sticky { 
-        position: static; 
-        margin-top: 40px; 
-        order: -1; /* Puts sidebar/quote box ABOVE content on mobile */
-    }
-
-    .page-header h1 { font-size: 2.2rem; }
+    .site-nav { display: none; } /* Add mobile menu later */
+    .hero-title { font-size: 2.5rem; }
+    .layout-grid { grid-template-columns: 1fr; }
+    .feature-grid { margin-top: 40px; }
 }
-
-```
