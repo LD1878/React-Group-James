@@ -1,3 +1,8 @@
+Here is the **complete, consolidated `assets/css/main.css` file**.
+
+This includes the core branding, the navigation dropdowns, and the new Service Page layout (grid & sticky sidebar). You can overwrite your current file with this.
+
+```css
 /* assets/css/main.css */
 
 :root {
@@ -5,8 +10,10 @@
     --brand-navy: #163259;       /* Primary: Trust, Authority, Engineering */
     --brand-red: #e31e24;        /* Accent: Safety, Urgent, Action */
     --brand-white: #ffffff;
+    
     --text-main: #2d3436;        /* Dark Grey for readability */
     --text-light: #636e72;       /* Muted text for meta info */
+    
     --bg-light: #f4f7f6;         /* Light grey background for sections */
     --border-color: #d1d8e0;
     
@@ -21,7 +28,7 @@
     --shadow-hover: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-/* --- RESET & BASE --- */
+/* --- 1. RESET & BASE --- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -29,6 +36,7 @@ body {
     color: var(--text-main);
     line-height: 1.6;
     background-color: var(--brand-white);
+    -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, .nav-link, .btn {
@@ -37,7 +45,7 @@ h1, h2, h3, h4, .nav-link, .btn {
     letter-spacing: 0.5px;
 }
 
-a { text-decoration: none; color: inherit; transition: 0.2s; }
+a { text-decoration: none; color: inherit; transition: 0.2s ease; }
 
 .container {
     max-width: var(--container-width);
@@ -45,7 +53,7 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
     padding: 0 20px;
 }
 
-/* --- BUTTONS --- */
+/* --- 2. BUTTONS --- */
 .btn {
     display: inline-block;
     padding: 12px 24px;
@@ -53,21 +61,28 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.9rem;
+    text-align: center;
 }
 
 .btn-primary {
     background-color: var(--brand-red);
     color: white;
 }
-.btn-primary:hover { background-color: #c0151a; }
+.btn-primary:hover { 
+    background-color: #c0151a; 
+    transform: translateY(-1px);
+}
 
 .btn-outline {
     border: 2px solid var(--brand-navy);
     color: var(--brand-navy);
 }
-.btn-outline:hover { background-color: var(--brand-navy); color: white; }
+.btn-outline:hover { 
+    background-color: var(--brand-navy); 
+    color: white; 
+}
 
-/* --- HEADER --- */
+/* --- 3. HEADER & NAVIGATION --- */
 .site-header {
     height: var(--header-height);
     background: white;
@@ -88,12 +103,12 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 800;
     color: var(--brand-navy);
+    letter-spacing: -0.5px;
 }
 
-/* --- NAVIGATION --- */
 .site-nav { display: flex; gap: 30px; align-items: center; }
 
 .nav-link {
@@ -101,29 +116,139 @@ a { text-decoration: none; color: inherit; transition: 0.2s; }
     font-weight: 600;
     color: var(--brand-navy);
     position: relative;
+    cursor: pointer;
 }
 .nav-link:hover { color: var(--brand-red); }
 
-/* Dropdown Logic */
-.dropdown { position: relative; padding: 10px 0; }
+/* Dropdown Menu */
+.dropdown { position: relative; padding: 25px 0; /* padding helps bridge gap */ }
+
 .dropdown-menu {
     display: none;
     position: absolute;
     top: 100%;
     left: -20px;
     background: white;
-    min-width: 220px;
+    min-width: 240px;
     box-shadow: var(--shadow-hover);
-    border-top: 3px solid var(--brand-red);
+    border-top: 4px solid var(--brand-red);
     padding: 10px 0;
+    border-radius: 0 0 4px 4px;
 }
+
 .dropdown:hover .dropdown-menu { display: block; }
+
 .dropdown-item {
     display: block;
-    padding: 10px 20px;
-    font-family: var(--font-body); /* Body font for sub-items reads better */
-    font-size: 0.9rem;
+    padding: 12px 24px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
     color: var(--text-main);
     text-transform: none;
+    border-bottom: 1px solid var(--bg-light);
 }
-.dropdown-item:hover { background: var(--bg-light); color: var(--brand-red); }
+
+.dropdown-item:hover { 
+    background: var(--bg-light); 
+    color: var(--brand-red); 
+    padding-left: 28px; /* Slight movement effect */
+}
+
+/* --- 4. HERO / PAGE HEADER --- */
+.page-header {
+    background: var(--brand-navy);
+    color: white;
+    padding: 60px 0;
+    margin-bottom: 40px;
+    border-bottom: 5px solid var(--brand-red);
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* --- 5. SERVICE PAGE LAYOUT (GRID) --- */
+.layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 350px; /* Main Content | Sidebar */
+    gap: 50px;
+    align-items: start;
+    margin-bottom: 80px;
+}
+
+/* Main Content Area Styling */
+.content-area h2 {
+    color: var(--brand-navy);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.content-area h3 {
+    color: var(--brand-red);
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.4rem;
+}
+
+.content-area p { margin-bottom: 1.2rem; font-size: 1.05rem; }
+
+.content-area ul { 
+    margin-left: 20px; 
+    margin-bottom: 20px; 
+}
+.content-area li { margin-bottom: 8px; }
+
+.content-area blockquote {
+    background: var(--bg-light);
+    border-left: 4px solid var(--brand-navy);
+    padding: 20px;
+    font-style: italic;
+    margin: 30px 0;
+    color: var(--text-main);
+}
+
+/* Sticky Sidebar */
+.sidebar-sticky {
+    position: sticky;
+    top: 110px; /* Stick below the header */
+    background: var(--bg-light);
+    padding: 35px;
+    border-radius: 8px;
+    border-top: 4px solid var(--brand-red);
+    box-shadow: var(--shadow-card);
+}
+
+.check-list li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: var(--brand-navy);
+    font-weight: 600;
+}
+
+/* --- 6. MOBILE RESPONSIVENESS --- */
+@media (max-width: 900px) {
+    .site-nav { display: none; } /* For now - we can add mobile menu js later */
+    
+    .layout-grid { 
+        grid-template-columns: 1fr; 
+        gap: 30px;
+    }
+    
+    .sidebar-sticky { 
+        position: static; 
+        margin-top: 40px; 
+        order: -1; /* Puts sidebar/quote box ABOVE content on mobile */
+    }
+
+    .page-header h1 { font-size: 2.2rem; }
+}
+
+```
