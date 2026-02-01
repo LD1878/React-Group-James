@@ -6,11 +6,11 @@
     {% seo %}
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 </head>
-<body>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
 
     <header class="site-header">
         <div class="container header-inner">
@@ -24,30 +24,61 @@
                 <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
                 
                 <div class="dropdown">
-                    <span class="nav-link">Services ▾</span>
+                    <span class="nav-link" style="cursor: default;">Services ▾</span>
                     <div class="dropdown-menu">
                         <a href="{{ '/services/eicr-testing/' | relative_url }}" class="dropdown-item">⚡ EICR Testing</a>
-                        <a href="{{ '/services/fire-risk-assessment/' | relative_url }}" class="dropdown-item">🔥 Fire Safety</a>
-                        <a href="{{ '/services/pat-testing/' | relative_url }}" class="dropdown-item">🔌 PAT Testing</a>
+                        <a href="{{ '/services/fire-risk-assessment/' | relative_url }}" class="dropdown-item">🔥 Fire Risk Assessment</a>
+                        <a href="{{ '/services/fire-door-inspections/' | relative_url }}" class="dropdown-item">🚪 Fire Door Checks</a>
                     </div>
                 </div>
 
                 <a href="{{ '/blog/' | relative_url }}" class="nav-link">Insights</a>
                 <a href="{{ '/contact/' | relative_url }}" class="nav-link">Contact</a>
                 
-                <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary">Get A Quote</a>
+                <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary">Get Quote</a>
             </nav>
 
+            <div style="display: none;" id="mobile-toggle">☰</div>
         </div>
     </header>
 
-    <main>
+    <main style="flex: 1;">
         {{ content }}
     </main>
 
-    <footer style="background: var(--brand-navy); color: white; padding: 40px 0; margin-top: 60px;">
-        <div class="container" style="text-align: center; font-size: 0.9rem; opacity: 0.7;">
-            &copy; {{ site.time | date: '%Y' }} Reaction Group. All Compliance Standards Met.
+    <footer>
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px;">
+                
+                <div>
+                    <h4 style="color: white; margin-bottom: 20px;">Reaction Group</h4>
+                    <p style="opacity: 0.7; font-size: 0.9rem;">
+                        Nationwide electrical and fire safety compliance. NICEIC & BAFE Accredited.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 style="color: white; margin-bottom: 20px;">Services</h4>
+                    <ul style="list-style: none; padding: 0; opacity: 0.8; line-height: 2; font-size: 0.9rem;">
+                        <li><a href="#">Fixed Wire Testing</a></li>
+                        <li><a href="#">PAT Testing</a></li>
+                        <li><a href="#">Fire Alarms</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 style="color: white; margin-bottom: 20px;">Contact</h4>
+                    <ul style="list-style: none; padding: 0; opacity: 0.8; line-height: 2; font-size: 0.9rem;">
+                        <li>0203 885 2299</li>
+                        <li>info@reaction-grp.com</li>
+                        <li>Milton Keynes, UK</li>
+                    </ul>
+                </div>
+
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; opacity: 0.5; font-size: 0.8rem;">
+                &copy; {{ site.time | date: '%Y' }} Reaction Group. All Rights Reserved.
+            </div>
         </div>
     </footer>
 
