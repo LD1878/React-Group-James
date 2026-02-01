@@ -1,0 +1,310 @@
+---
+layout: default
+---
+
+<style>
+    /* --- THEME MAPPING (Connecting your Layout to our Blue Theme) --- */
+    :root {
+        --sp-red: var(--brand-red);       /* Maps to Safety Red */
+        --gold-color: var(--brand-navy);  /* Maps Juro Gold to Reaction Navy */
+        --bg-secondary: #f1f5f9;          /* Light Blue/Grey background */
+        --bg-primary: #ffffff;
+        --text-primary: var(--text-main);
+        --text-muted: #64748b;
+        --border-light: var(--border-subtle);
+        --elev-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 1. POST HEADER - THEME SYNCED */
+    .post-header-premium {
+        padding: 4rem 0 3rem;
+        background: var(--bg-secondary);
+        border-top: 8px solid var(--brand-navy); /* Solid Navy Top */
+        border-bottom: 1px solid var(--border-light);
+    }
+
+    .post-category-tag {
+        display: inline-block;
+        background: var(--brand-red); /* Red for High Visibility */
+        color: white;
+        padding: 5px 15px;
+        border-radius: 4px;
+        font-weight: 800;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        font-family: 'Oswald', sans-serif;
+    }
+
+    .post-title-main {
+        font-family: 'Oswald', sans-serif !important;
+        font-size: clamp(2.2rem, 5vw, 3.8rem) !important;
+        font-weight: 700 !important;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        color: var(--brand-navy);
+        letter-spacing: -1px !important;
+    }
+
+    /* 2. THE WHITE PAPER GRID */
+    .post-main-grid {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 5rem;
+        margin-top: 4rem;
+        align-items: start;
+    }
+
+    /* 3. BODY TYPOGRAPHY */
+    .post-body-content {
+        font-family: 'Inter', sans-serif;
+        font-size: 1.15rem;
+        line-height: 1.85;
+        color: var(--text-primary);
+    }
+
+    .post-body-content h2 {
+        font-size: 2rem;
+        margin-top: 3rem;
+        border-bottom: 4px solid var(--brand-navy); /* Navy Underline */
+        padding-bottom: 0.5rem;
+        color: var(--brand-navy);
+        font-family: 'Oswald', sans-serif;
+        scroll-margin-top: 100px;
+    }
+
+    .post-body-content h3 {
+        font-size: 1.5rem;
+        margin-top: 2.5rem;
+        color: var(--brand-red);
+        font-family: 'Oswald', sans-serif;
+        scroll-margin-top: 100px;
+    }
+    
+    .post-body-content ul {
+        margin-bottom: 1.5rem;
+        margin-left: 1.5rem;
+    }
+    
+    .post-body-content li {
+        margin-bottom: 0.5rem;
+    }
+
+    /* 4. THE TRANSPARENCY BOX (Adapted for Compliance) */
+    .transparency-notice {
+        background: var(--bg-primary);
+        border-left: 6px solid var(--brand-navy);
+        padding: 1.5rem 2rem;
+        border-radius: 8px;
+        margin: 3rem 0;
+        font-size: 0.95rem;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        color: var(--text-primary);
+        border: 1px solid var(--border-light);
+        box-shadow: var(--elev-3);
+    }
+
+    /* 5. STICKY SIDEBAR CTA */
+    .post-sidebar {
+        position: sticky;
+        top: 120px;
+    }
+
+    .sidebar-card {
+        background: var(--brand-navy); /* Navy Background */
+        color: white;
+        padding: 2.5rem 2rem;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: var(--elev-3);
+    }
+
+    .sidebar-card h4 {
+        color: white !important;
+        font-family: 'Oswald', sans-serif;
+    }
+
+    .sidebar-card p {
+        color: rgba(255,255,255,0.8) !important;
+    }
+
+    /* 6. DYNAMIC TABLE OF CONTENTS */
+    .toc-container {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        border-left: 2px solid var(--border-light);
+    }
+    
+    .toc-title {
+        font-family: 'Oswald', sans-serif;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+        display: block;
+    }
+
+    .toc-link {
+        display: block;
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 0.95rem;
+        margin-bottom: 0.8rem;
+        transition: all 0.2s ease;
+        line-height: 1.4;
+    }
+
+    .toc-link:hover, .toc-link.active {
+        color: var(--brand-red);
+        font-weight: 700;
+        transform: translateX(5px);
+    }
+
+    /* MOBILE ADJUSTMENTS */
+    @media (max-width: 900px) {
+        .post-main-grid { grid-template-columns: 1fr; gap: 3rem; }
+        .post-sidebar { position: static; margin-top: 4rem; }
+        .toc-container { display: none; }
+        .post-title-main { font-size: 2.5rem !important; }
+    }
+</style>
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <header class="post-header-premium">
+        <div class="container">
+            <span class="post-category-tag">{{ page.category | default: "Guide" }}</span>
+            <h1 class="post-title-main" itemprop="headline">{{ page.title }}</h1>
+            
+            <div style="display: flex; gap: 25px; flex-wrap: wrap; color: var(--text-muted); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+                <span>🗓️ {{ page.date | date: "%B %Y" }}</span>
+                <span style="color: var(--brand-navy);">🛡️ Verified by Tech Team</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="post-main-grid">
+            
+            <div class="post-body-content" itemprop="articleBody">
+                
+                <div class="transparency-notice">
+                    <span style="font-size: 2.5rem;">📋</span>
+                    <div>
+                        <strong>Compliance Standard:</strong> This guide is aligned with current <strong>BS 7671</strong> and <strong>BS 5306</strong> regulations. All inspections discussed are performed by NICEIC or BAFE accredited engineers.
+                    </div>
+                </div>
+
+                <div id="article-content">
+                    {{ content }}
+                </div>
+
+                <div style="margin-top: 6rem; padding: 4rem; background: var(--bg-secondary); border-radius: 12px; text-align: center; border: 1px solid var(--border-light);">
+                    <h2 style="border: none; margin-top: 0; color: var(--brand-navy);">Need a Compliance Quote?</h2>
+                    <p style="margin-bottom: 2.5rem; color: var(--text-muted);">Ensure your building is safe and insured. Get a fixed price for EICR or Fire Risk Assessments today.</p>
+                    <a href="{{ '/contact/' | relative_url }}" class="btn btn-primary" style="padding: 1.2rem 3rem; font-size: 1.1rem;">Get Priority Quote</a>
+                </div>
+            </div>
+
+            <aside class="post-sidebar">
+                <div class="sidebar-card">
+                    <h4 style="text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">Instant Quote</h4>
+                    <p style="font-size: 0.9rem; margin-bottom: 2rem;">Get a response within 2 working hours for your property.</p>
+                    <a href="{{ '/contact/' | relative_url }}" class="btn" style="background: white; color: var(--brand-navy); width: 100%; border-radius: 4px; font-weight: 700;">Request Pricing</a>
+                </div>
+
+                <div id="toc-wrapper" class="toc-container">
+                    <span class="toc-title">On This Page</span>
+                </div>
+
+                <div style="margin-top: 3rem; padding: 2rem; border: 1px solid var(--border-light); border-radius: 12px; background: var(--bg-secondary);">
+                    <h4 style="margin-top: 0; font-family: 'Oswald', sans-serif; text-transform: uppercase; color: var(--brand-navy);">Related Guides</h4>
+                    <ul style="list-style: none; padding: 0; margin-top: 1.5rem;">
+                        {% for post in site.posts limit:4 %}
+                        {% unless post.url == page.url %}
+                        <li style="margin-bottom: 1.2rem;">
+                            <a href="{{ post.url | relative_url }}" style="font-weight: 600; font-size: 0.95rem; color: var(--text-primary); text-decoration: none; border-bottom: 1px solid transparent; transition: border 0.2s;">
+                                {{ post.title }}
+                            </a>
+                        </li>
+                        {% endunless %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </aside>
+
+        </div>
+    </div>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ page.title }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Reaction Group",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.url }}/assets/images/logo.png"
+    }
+  },
+  "url": "{{ site.url }}{{ page.url }}",
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "description": "{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}"
+}
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const content = document.getElementById('article-content');
+    const tocWrapper = document.getElementById('toc-wrapper');
+    const headers = content.querySelectorAll('h2'); 
+
+    if (headers.length < 2) {
+        tocWrapper.style.display = 'none'; 
+        return;
+    }
+
+    headers.forEach((header, index) => {
+        if (!header.id) {
+            header.id = 'section-' + index;
+        }
+
+        const link = document.createElement('a');
+        link.href = '#' + header.id;
+        link.textContent = header.textContent;
+        link.className = 'toc-link';
+        
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById(header.id).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        tocWrapper.appendChild(link);
+    });
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        headers.forEach(header => {
+            const top = header.getBoundingClientRect().top;
+            if (top < 200) {
+                current = header.getAttribute('id');
+            }
+        });
+
+        document.querySelectorAll('.toc-link').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
+    });
+});
+</script>
