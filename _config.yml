@@ -6,3 +6,4 @@ url: "https://LD1878.github.io"
 theme: minima
 plugins:
   - jekyll-seo-tag
+future: true
